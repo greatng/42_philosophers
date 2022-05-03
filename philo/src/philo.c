@@ -6,11 +6,12 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 12:42:04 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:47:51 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
 static int	instruct(void)
 {
 	printf("run by : ./philo no_of_philo time_to_die");
@@ -23,7 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_arg	a;
 	t_philo	*p;
-	int	i;
+	int		i;
 
 	if (!is_valid(argc, argv))
 		return (instruct());
@@ -34,8 +35,11 @@ int	main(int argc, char **argv)
 	philo_create(p, a);
 	i = -1;
 	while (++i < (int)a.phil_n)
-		pthread_create(&p[i].tid, NULL, (void *)philo_action, &p[i]);
+	{
+		gettimeofday(&p[i].start, NULL);
+		pthread_create(&p[i].tid, NULL, philo_action, &p[i]);
+	}
 	check_starving(p);
-	i = -1;
+	usleep(1000);
 	free(p);
 }

@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 13:35:16 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:29:45 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,24 @@ typedef struct s_arg
 
 typedef struct s_philo
 {
-	t_arg	arg;
 	struct s_philo	*l_philo;
-	size_t	name;
-	pthread_mutex_t	fork;
-	size_t	fed;
 	struct timeval	last_fed;
 	struct timeval	start;
 	struct timeval	wait;
-	pthread_t	tid;
+	pthread_t		tid;
+	t_arg			arg;
+	size_t			name;	
+	size_t			fed;
+	size_t			exit;
+	pthread_mutex_t	fork;
 }	t_philo;
 
 int		is_valid(int argc, char **argv);
+int		time_stamp(t_philo p);
 
 void	arg_init(t_arg *a, int argc, char **argv);
 void	philo_create(t_philo *p, t_arg a);
-void	philo_action(t_philo *p);
 void	check_starving(t_philo *p);
-int	time_stamp(t_philo p);
+void	*philo_action(void *a);
 
 #endif
