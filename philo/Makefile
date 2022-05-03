@@ -1,8 +1,8 @@
 NAME			=	philo
 
 LEAKS			=	-fsanitize=address -fno-omit-frame-pointer
-CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
+CC			=	gcc
+CFLAGS			=	-Wall -Wextra -Werror -g3
 RM			=	rm -rf
 
 HEADER_DIR		=	include

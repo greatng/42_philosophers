@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:59:48 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 11:02:31 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 13:20:42 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	ft_atoi(const char *str)
 
 void	arg_init(t_arg *a, int argc, char **argv)
 {
-	a->died = 0;
 	a->phil_n = ft_atoi(argv[1]);
 	a->die_t = ft_atoi(argv[2]);
 	a->eat_t = ft_atoi(argv[3]);
@@ -49,14 +48,13 @@ void	philo_create(t_philo *p, t_arg a)
 	while (i < (int)a.phil_n)
 	{
 		p[i].arg = a;
-		p[i].name = i;
-		p[i].need_eat = 1;
+		p[i].name = i + 1;
 		tmp = &p[i].fork;
 		if (pthread_mutex_init(tmp, NULL))
 			printf("mutex init failed\n");
 		p[i].l_philo = &p[(i + 1) % a.phil_n];
-		p[i].died = &a.died;
 		gettimeofday(&(p[i].start), NULL);
+		p[i].fed = 0;
 		i++;
 	}
 }

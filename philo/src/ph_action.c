@@ -6,13 +6,13 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 11:51:21 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 13:40:13 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static int	time_stamp(t_philo p)
+int	time_stamp(t_philo p)
 {
 	struct timeval	action;
 	int	diff;
@@ -28,28 +28,26 @@ static int	time_stamp(t_philo p)
 
 static void	sleep_think(t_philo *p)
 {
-	time_stamp(*p);
-	printf("%8d "SALMON"%3zu"RES" is sleeping\n", \
+	printf("%8d "CYAN"%3zu"RES" is sleeping\n", \
 		time_stamp(*p), p->name);
 	usleep(1000 * p->arg.sleep_t);
-	time_stamp(*p);
-	printf("%8d "SALMON"%3zu"RES" is thinking\n", \
+	printf("%8d "CYAN"%3zu"RES" is thinking\n", \
 		time_stamp(*p), p->name);
-	p->need_eat = 1;
 }
 
 static int	can_eat(t_philo *p)
 {
-	if (!pthread_mutex_lock(&(p->l_philo)->fork))
+	if (!pthread_mutex_lock(&p->fork))
 	{
-		if (!pthread_mutex_lock(&p->fork))
+		if (!pthread_mutex_lock(&(p->l_philo)->fork))
 		{	
-			printf("%8d "SALMON"%3zu"RES" has taken a fork\n", \
+			printf("%8d "CYAN"%3zu"RES" has taken a fork\n", \
 				time_stamp(*p), p->name);
-			printf("%8d "SALMON"%3zu"RES" is eating\n", time_stamp(*p), p->name);
-			usleep(1000 * p->arg.eat_t);
+			printf("%8d "CYAN"%3zu"RES" is eating\n", \
+				time_stamp(*p), p->name);
 			gettimeofday(&p->last_fed, NULL);
-			p->need_eat = 1;
+			p->fed += 1;
+			usleep(1000 * p->arg.eat_t);
 			pthread_mutex_unlock(&(p->l_philo)->fork);
 			pthread_mutex_unlock(&p->fork);
 			return (1);
@@ -69,3 +67,5 @@ void	philo_action(t_philo *p)
 			sleep_think(p);
 	}
 }
+
+//if (!pthread_mutex_lock(&p->fork))
