@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 22:29:38 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 01:02:39 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ typedef struct s_philo
 
 int		is_valid(int argc, char **argv);
 int		time_stamp(t_philo p);
+int		death_stamp(t_philo p);
 
 void	arg_init(t_arg *a, int argc, char **argv);
 void	philo_create(t_philo *p, t_arg a, size_t *exit);
 void	check_starving(t_philo *p);
+void	my_sleep(int t, int elapse);
 void	*philo_action(void *a);
+void	*philo_lastaction(void *a);
 
 #endif

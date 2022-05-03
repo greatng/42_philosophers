@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 22:26:34 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 01:05:38 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 static void	exit_flag(t_philo *p)
 {
 	*(p->exit) = 1;
-}
-
-static int	death_stamp(t_philo p)
-{
-	struct timeval	mark;
-	unsigned int	elapse;
-	int				diff;
-	int				diff_sec;
-
-	gettimeofday(&mark, NULL);
-	diff = (mark.tv_usec - p.last_fed.tv_usec) / 1000;
-	diff_sec = mark.tv_sec - p.last_fed.tv_sec;
-	elapse = diff + (diff_sec * 1000);
-	return (elapse);
 }
 
 static int	check_fed(t_philo *p)
@@ -60,7 +46,7 @@ void	check_starving(t_philo *p)
 	size_t	i;
 	int		died;
 
-	died = p->arg.die_t / 1000;
+	died = p->arg.die_t;
 	while (1)
 	{
 		i = 0;
@@ -77,6 +63,5 @@ void	check_starving(t_philo *p)
 			}
 			i++;
 		}
-		usleep(50);
 	}
 }

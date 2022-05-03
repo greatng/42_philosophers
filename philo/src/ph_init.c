@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:59:48 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 22:30:16 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 01:03:47 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	ft_atoi(const char *str)
 void	arg_init(t_arg *a, int argc, char **argv)
 {
 	a->phil_n = ft_atoi(argv[1]);
-	a->die_t = ft_atoi(argv[2]) * 1000;
-	a->eat_t = ft_atoi(argv[3]) * 1000;
-	a->sleep_t = ft_atoi(argv[4]) * 1000;
+	a->die_t = ft_atoi(argv[2]);
+	a->eat_t = ft_atoi(argv[3]);
+	a->sleep_t = ft_atoi(argv[4]);
 	if (argc == 6)
 		a->eat_n = ft_atoi(argv[5]);
 	else

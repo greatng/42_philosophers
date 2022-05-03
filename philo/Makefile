@@ -10,7 +10,7 @@ HEADER			=	philo
 HEADERS			=	$(addprefix $(HEADER_DIR)/, $(addsuffix .h, $(HEADER)))
 
 SRC_DIR			=	src
-SRC			=	philo ph_init ph_action ph_checkvalid ph_starving
+SRC			=	philo ph_init ph_action ph_checkvalid ph_starving ph_timer
 SRCS 			=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC)))
 
 OBJ_DIR			=	obj

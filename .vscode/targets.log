@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Tue May  3 17:07:35 2022
+# Make data base, printed on Wed May  4 01:02:50 2022
 
 # Variables
 
@@ -17,7 +18,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 ?F = $(notdir $?)
 # environment
 VSCODE_LOG_NATIVE = false
- 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -43,7 +43,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-b12d7d31-eb8b-405d-8e70-c1f16b3f284d.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-ef5002f0-ca86-4cbb-bca8-0a1987d9b00c.sock
 # environment
 VSCODE_CWD = /
 # makefile (from `Makefile', line 1)
@@ -175,7 +175,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 46725
+VSCODE_PID = 67527
 # variable set hash-table stats:
 # Load=82/1024=8%, Rehash=0, Collisions=2/108=2%
 
@@ -213,7 +213,6 @@ all:
 # automatic
 # | := 
 # automatic
- 
 # < := 
 # automatic
 # ^ := 
@@ -234,6 +233,7 @@ pig:
 	.^!J5PGGBGG5::~!77?77~:G&&&&&&&&#GY!.\n\
 	.?G#&&&&&&&&&B^G&&&&&&&B^G&&&&&&&&&&&#^\n\
 	.P&&&&&&&&&&#!?&&&&&&&&&J~B&&&&&&&&#Y^\n\
+ 
 	.JB&&&&&&&G!J&&&&&&&&&&&Y!YB###B5J??^\n\
 	~??5GGG5?7P&&&&&&&&&&&&&#5JJJJJ5G&&#5^\n\
 	.J&&BPYYY5G&&&&&&&&&&&&&&&&&&&#&&&&&&&&#~\n\
@@ -309,6 +309,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue May  3 17:07:35 2022
+# Finished Make data base on Wed May  4 01:02:50 2022
 
  
