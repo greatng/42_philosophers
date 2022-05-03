@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 13:37:38 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:04:50 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_fed(t_philo *p)
 	if (min_fed >= p->arg.eat_n)
 	{
 		pthread_detach(p->tid);
-		printf("Number of eat times has reach\n");
+		printf("Number of eat times has reached.\n");
 		return (1);
 	}
 	return (0);
