@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 17:54:50 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:31:58 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,33 @@ int	time_stamp(t_philo p)
 
 static void	sleep_think(t_philo *p)
 {
-	if (p->exit)
+	if (*(p->exit))
 		return ;
-	printf("%8d "CYAN"%3zu"RES" is sleeping\n", \
+	printf("%8d "CYAN"%3zu"RES STR_S, \
 		time_stamp(*p), p->name);
-	usleep(1000 * p->arg.sleep_t);
-	if (p->exit)
+	usleep(p->arg.sleep_t);
+	if (*(p->exit))
 		return ;
-	printf("%8d "CYAN"%3zu"RES" is thinking\n", \
+	printf("%8d "CYAN"%3zu"RES STR_T, \
 		time_stamp(*p), p->name);
 }
 
 static int	can_eat(t_philo *p)
 {
-	if (p->exit)
+	if (*(p->exit))
 		return (0);
 	if (!pthread_mutex_lock(&p->fork) && \
 		!pthread_mutex_lock(&(p->l_philo)->fork))
 	{
-		if (p->exit)
+		if (*(p->exit))
 			return (0);
-		printf("%8d "CYAN"%3zu"RES" has taken a fork\n", \
+		printf("%8d "CYAN"%3zu"RES STR_F, \
 			time_stamp(*p), p->name);
-		printf("%8d "CYAN"%3zu"RES" has taken a fork\n", \
+		printf("%8d "CYAN"%3zu"RES STR_F, \
 			time_stamp(*p), p->name);
-		printf("%8d "CYAN"%3zu"RES" is eating\n", \
+		if (*(p->exit))
+			return (0);
+		printf("%8d "CYAN"%3zu"RES STR_E, \
 			time_stamp(*p), p->name);
 		gettimeofday(&p->last_fed, NULL);
 		p->fed += 1;
@@ -60,7 +62,7 @@ static int	can_eat(t_philo *p)
 		pthread_mutex_unlock(&(p->l_philo)->fork);
 		pthread_mutex_unlock(&p->fork);
 		return (1);
-	}
+	}	
 	return (0);
 }
 
@@ -70,11 +72,10 @@ void	*philo_action(void *a)
 
 	p = (t_philo *)a;
 	p->last_fed = p->start;
-	while (!p->exit)
+	while (!*(p->exit))
 	{
 		if (can_eat(p))
 			sleep_think(p);
 	}
-	pthread_detach(p->tid);
 	return (NULL);
 }

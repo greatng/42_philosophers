@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 17:55:02 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:26:34 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 static void	exit_flag(t_philo *p)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < p->arg.eat_n)
-	{
-		p[i].exit = 1;
-		i++;
-	}
+	*(p->exit) = 1;
 }
 
 static int	death_stamp(t_philo p)
@@ -55,8 +48,8 @@ static int	check_fed(t_philo *p)
 	}
 	if (min_fed >= p->arg.eat_n)
 	{
-		printf("Number of eat times has reached.\n");
 		exit_flag(p);
+		printf("Number of eat times has reached.\n");
 		return (1);
 	}
 	return (0);
@@ -77,13 +70,13 @@ void	check_starving(t_philo *p)
 		{
 			if (death_stamp(*p) > died)
 			{
-				printf("%8d "RED"%3zu"RES" has died\n", \
-					time_stamp(*p), p[i].name);
 				exit_flag(p);
+				printf("%8d "RED"%3zu"RES STR_D, \
+					time_stamp(*p), p[i].name);
 				return ;
 			}
 			i++;
 		}
-		usleep(1000);
+		usleep(50);
 	}
 }

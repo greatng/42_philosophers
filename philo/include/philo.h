@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 17:29:45 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:29:38 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # define RED "\033[0;31m"
 # define CYAN "\033[0;36m"
 # define RES "\033[0m"
+# define STR_D " has died\n"
+# define STR_S " is sleeping\n"
+# define STR_T " is thinking\n"
+# define STR_E " is eating\n"
+# define STR_F " has taken a fork\n"
 
 typedef struct s_arg
 {
@@ -42,7 +47,7 @@ typedef struct s_philo
 	t_arg			arg;
 	size_t			name;	
 	size_t			fed;
-	size_t			exit;
+	size_t			*exit;
 	pthread_mutex_t	fork;
 }	t_philo;
 
@@ -50,7 +55,7 @@ int		is_valid(int argc, char **argv);
 int		time_stamp(t_philo p);
 
 void	arg_init(t_arg *a, int argc, char **argv);
-void	philo_create(t_philo *p, t_arg a);
+void	philo_create(t_philo *p, t_arg a, size_t *exit);
 void	check_starving(t_philo *p);
 void	*philo_action(void *a);
 

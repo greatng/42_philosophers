@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 17:47:51 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:32:37 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_arg	a;
 	t_philo	*p;
+	size_t	exit;
 	int		i;
 
 	if (!is_valid(argc, argv))
@@ -32,14 +33,15 @@ int	main(int argc, char **argv)
 	p = malloc(sizeof(t_philo) * (a.phil_n + 1));
 	if (!p)
 		return (1);
-	philo_create(p, a);
+	exit = 0;
+	philo_create(p, a, &exit);
 	i = -1;
 	while (++i < (int)a.phil_n)
 	{
-		gettimeofday(&p[i].start, NULL);
 		pthread_create(&p[i].tid, NULL, philo_action, &p[i]);
+		pthread_detach(p[i].tid);
 	}
 	check_starving(p);
-	usleep(1000);
+	usleep(50000);
 	free(p);
 }

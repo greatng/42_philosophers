@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:59:48 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/03 17:50:24 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:30:16 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	arg_init(t_arg *a, int argc, char **argv)
 		a->eat_n = 0;
 }
 
-void	philo_create(t_philo *p, t_arg a)
+void	philo_create(t_philo *p, t_arg a, size_t *exit)
 {
 	int				i;
 	pthread_mutex_t	*tmp;
@@ -54,7 +54,7 @@ void	philo_create(t_philo *p, t_arg a)
 			printf("mutex init failed\n");
 		p[i].l_philo = &p[(i + 1) % a.phil_n];
 		p[i].fed = 0;
-		p[i].exit = 0;
+		p[i].exit = exit;
 		gettimeofday(&p[i].start, NULL);
 		i++;
 	}
