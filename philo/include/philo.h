@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 01:02:39 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 09:32:08 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include <sys/time.h>
 
 # define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
 # define CYAN "\033[0;36m"
 # define RES "\033[0m"
+
 # define STR_D " has died\n"
 # define STR_S " is sleeping\n"
 # define STR_T " is thinking\n"

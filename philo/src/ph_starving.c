@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 01:05:38 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 09:35:19 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	check_starving(t_philo *p)
 			}
 			i++;
 		}
+		my_sleep(1, 0);
 	}
 }

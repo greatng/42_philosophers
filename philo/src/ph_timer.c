@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 01:01:45 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 01:02:21 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 09:37:34 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	my_sleep(int t, int elapse)
 	int				diff_sec;
 
 	gettimeofday(&mark, NULL);
+	usleep(t * 2 / 3);
 	gettimeofday(&now, NULL);
 	diff = (now.tv_usec - mark.tv_usec) / 1000;
 	diff_sec = now.tv_sec - mark.tv_sec;
@@ -44,7 +45,7 @@ void	my_sleep(int t, int elapse)
 		diff = (now.tv_usec - mark.tv_usec) / 1000;
 		diff_sec = now.tv_sec - mark.tv_sec;
 		elapse = diff + (diff_sec * 1000);
-		usleep(100);
+		usleep(300);
 	}
 	return ;
 }

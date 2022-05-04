@@ -6,11 +6,29 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 01:03:19 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/04 10:17:22 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+static void	philo_release(t_philo *p, int philo_n)
+{
+	int	i;
+
+	i = 0;
+	while (i < philo_n)
+	{
+		pthread_create(&p[i].tid, NULL, philo_action, &p[i]);
+		pthread_detach(p[i].tid);
+		i += 2;
+		if (i >= philo_n && !(i % 2))
+		{
+			usleep(500);
+			i = 1;
+		}
+	}
+}
 
 static int	instruct(void)
 {
@@ -25,7 +43,7 @@ int	main(int argc, char **argv)
 	t_arg	a;
 	t_philo	*p;
 	size_t	exit;
-	int		i;
+	// int		i;
 
 	if (!is_valid(argc, argv))
 		return (instruct());
@@ -35,12 +53,20 @@ int	main(int argc, char **argv)
 		return (1);
 	exit = 0;
 	philo_create(p, a, &exit);
-	i = -1;
-	while (++i < (int)a.phil_n)
-	{
-		pthread_create(&p[i].tid, NULL, philo_action, &p[i]);
-		pthread_detach(p[i].tid);
-	}
+	philo_release(p, a.phil_n);
+	// i = 0;
+	// while (i < (int)a.phil_n)
+	// {
+	// 	pthread_create(&p[i].tid, NULL, philo_action, &p[i]);
+	// 	pthread_detach(p[i].tid);
+	// 	i += 2;
+	// 	if (i >= (int)a.phil_n && !(i % 2))
+	// 	{
+	// 		usleep(500);
+	// 		i = 1;
+	// 	}
+	// }
+	// usleep(500);
 	check_starving(p);
 	usleep(50000);
 	free(p);
