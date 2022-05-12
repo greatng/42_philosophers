@@ -6,63 +6,71 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 09:35:19 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:59:18 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static void	exit_flag(t_philo *p)
-{
-	*(p->exit) = 1;
-}
-
-static int	check_fed(t_philo *p)
+void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk)
 {
 	size_t	i;
-	size_t	min_fed;
 
 	i = 0;
-	min_fed = p->fed;
-	if (!p->arg.eat_n)
-		return (0);
-	while (i < p[i].arg.phil_n)
+	sem_wait(exit.died);
+	while (i < p->arg.phil_n)
 	{
-		if (p[i].fed < min_fed)
-			min_fed = p[i].fed;
-		i++;
+		kill(p[i++].pid, SIGINT);
+		sem_post(exit.fed);
 	}
-	if (min_fed >= p->arg.eat_n)
-	{
-		exit_flag(p);
-		printf("Number of eat times has reached.\n");
-		return (1);
-	}
-	return (0);
+	free(p);
+	sem_close(exit.fed);
+	sem_unlink("/fed");
+	sem_close(exit.died);
+	sem_unlink("/died");
+	sem_close(forkk);
+	sem_unlink("/fork");
 }
 
-void	check_starving(t_philo *p)
+static void	thread_fed(t_exit *exit)
 {
 	size_t	i;
-	int		died;
+	size_t	philo_n;
 
+	i = 0;
+	philo_n = exit->p->arg.phil_n;
+	while (i < philo_n)
+	{
+		sem_wait(exit->fed);
+		i++;
+	}
+	printf("All fed\n");
+	sem_post(exit->died);
+}
+
+void	check_fed(t_philo *p, t_exit exit)
+{
+	pthread_t	pid;
+
+	exit.p = p;
+	pthread_create(&pid, 0, (void *)thread_fed, &exit);
+}
+
+void	check_starving(t_exit *exit)
+{
+	t_philo		*p;
+	int			died;
+
+	p = exit->p;
 	died = p->arg.die_t;
 	while (1)
 	{
-		i = 0;
-		if (check_fed(p))
-			break ;
-		while (i < p->arg.phil_n)
+		if (death_stamp(*p) > died)
 		{
-			if (death_stamp(*p) > died)
-			{
-				exit_flag(p);
-				printf("%8d "RED"%3zu"RES STR_D, \
-					time_stamp(*p), p[i].name);
-				return ;
-			}
-			i++;
+			printf("%8d "RED"%3zu"RES STR_D, \
+				time_stamp(*p), p->name);
+			sem_post(exit->died);
 		}
-		my_sleep(1, 0);
+		usleep(50);
 	}
 }

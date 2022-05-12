@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/12 18:57:59 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:22:20 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <pthread.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <semaphore.h>
+# include <signal.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -41,26 +43,33 @@ typedef struct s_arg
 
 typedef struct s_philo
 {
-	struct s_philo	*l_philo;
 	struct timeval	last_fed;
 	struct timeval	start;
-	pthread_t		tid;
+	pid_t			pid;
 	t_arg			arg;
 	size_t			name;	
 	size_t			fed;
-	size_t			*exit;
-	pthread_mutex_t	fork;
 }	t_philo;
+
+typedef struct s_exit
+{
+	sem_t	*fed;
+	sem_t	*died;
+	t_philo	*p;
+}	t_exit;
 
 int		is_valid(int argc, char **argv);
 int		time_stamp(t_philo p);
 int		death_stamp(t_philo p);
 
 void	arg_init(t_arg *a, int argc, char **argv);
-void	philo_create(t_philo *p, t_arg a, size_t *exit);
-void	check_starving(t_philo *p);
+void	philo_create(t_philo *p, t_arg a);
+void	check_starving(t_exit *exit);
+void	check_fed(t_philo *p, t_exit exit);
+void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk);
 void	my_sleep(int t, int elapse);
-void	*philo_action(void *a);
-void	*philo_lastaction(void *a);
+void	philo_action(void *a, sem_t *fork, t_exit exit);
+//void	*philo_lastaction(void *a);
+void	fed_init(sem_t *fed, size_t n);
 
 #endif

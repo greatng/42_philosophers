@@ -1,9 +1,8 @@
-NAME			=	philo
+NAME			=	philo_bonus
 
 LEAKS			=	-fsanitize=address -fno-omit-frame-pointer
 CC			=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -g3
-RM			=	rm -rf
 
 HEADER_DIR		=	include
 HEADER			=	philo
@@ -39,10 +38,10 @@ leaks:				$(NAME)
 					$(CC) $(LEAKS) $(SRCS) -o $(NAME)
 
 clean:
-					@$(RM) $(OBJ) $(OBJ_B) $(OBJ_DIR)
+					@$(RM) -rf $(OBJ) $(OBJ_B) $(OBJ_DIR)
 fclean:				clean
-					@$(RM) $(NAME) $(NAME_B)
-
+					@$(RM) -rf $(NAME)
+					
 re:					fclean all
 
 .PHONY:				all clean fclean re libft leaks

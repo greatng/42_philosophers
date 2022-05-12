@@ -1,4 +1,5 @@
 MAN			=	./philo
+BONUS_D			=	./philo_bonus
 
 GREEN = \033[38;5;2m
 NORMAL = \033[38;5;255m
@@ -9,12 +10,16 @@ HOTPINK = \033[38;5;168m
 
 all:			
 				@make -C $(MAN)
+				@make -C $(BONUS_D)
+				@make pig
 
 clean:			
 				@make clean -C $(MAN)
+				@make clean -C $(BONUS_D)
 
 fclean:			
 				@make fclean -C $(MAN)
+				@make fclean -C $(BONUS_D)
 
 
 pig:				
