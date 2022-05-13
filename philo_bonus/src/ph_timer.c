@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 01:01:45 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/12 22:29:57 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:04:23 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ int	time_stamp(t_philo p)
 	diff_sec = mark.tv_sec - p.start.tv_sec;
 	elapse = diff + (diff_sec * 1000);
 	return (elapse);
-}
-
-void	my_sleep(int t, int elapse)
-{
-	struct timeval	mark;
-	struct timeval	now;
-	int				diff;
-	int				diff_sec;
-
-	gettimeofday(&mark, NULL);
-	usleep(t * 2 / 3);
-	gettimeofday(&now, NULL);
-	diff = (now.tv_usec - mark.tv_usec) / 1000;
-	diff_sec = now.tv_sec - mark.tv_sec;
-	elapse = diff + (diff_sec * 1000);
-	while (elapse < t)
-	{
-		gettimeofday(&now, NULL);
-		diff = (now.tv_usec - mark.tv_usec) / 1000;
-		diff_sec = now.tv_sec - mark.tv_sec;
-		elapse = diff + (diff_sec * 1000);
-		usleep(300);
-	}
-	return ;
 }
 
 int	death_stamp(t_philo p)

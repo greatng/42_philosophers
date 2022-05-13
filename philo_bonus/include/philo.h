@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/12 22:22:20 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:04:34 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ void	philo_create(t_philo *p, t_arg a);
 void	check_starving(t_exit *exit);
 void	check_fed(t_philo *p, t_exit exit);
 void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk);
-void	my_sleep(int t, int elapse);
 void	philo_action(void *a, sem_t *fork, t_exit exit);
-//void	*philo_lastaction(void *a);
 void	fed_init(sem_t *fed, size_t n);
 
 #endif

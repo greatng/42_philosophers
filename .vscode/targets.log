@@ -8,11 +8,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu May 12 23:04:47 2022
+# Make data base, printed on Thu May 12 23:09:31 2022
 
 # Variables
 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
@@ -22,7 +23,6 @@ VSCODE_LOG_NATIVE = false
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
- 
 # automatic
 @F = $(notdir $@)
 # makefile
@@ -44,7 +44,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-f6e44ba3-6613-4551-a3a9-f1d16b636d2d.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-c947e101-c254-4b31-a82f-fe8a58cb0bf4.sock
 # environment
 VSCODE_CWD = /
 # makefile (from `Makefile', line 1)
@@ -55,8 +55,6 @@ SALMON = \033[38;5;174m
 PATH = /Users/greatng/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/usr/local/bin:/Users/greatng/Library/Python/3.8/bin:/Applications/VMware Fusion Tech Preview.app/Contents/Public:/usr/local/go/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/greatng/.cache/zsh4humans/v5/fzf/bin
 # environment
 LSCOLORS = ExGxDxDxCxDxDxFxFxexEx
-# environment
-LaunchInstanceID = 668EFD5C-BE36-4777-9B39-C06D46E0F20E
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -94,7 +92,7 @@ HOME = /Users/greatng
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/greatng/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = /Users/greatng/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
 LOGNAME = greatng
 # environment
@@ -134,7 +132,7 @@ TMPDIR = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/greatng/Library/Application Support/Code/1.67.0-main.sock
+VSCODE_IPC_HOOK = /Users/greatng/Library/Application Support/Code/1.67.1-main.sock
 # makefile (from `Makefile', line 6)
 RED = \033[38;5;1m
 # makefile
@@ -144,7 +142,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.9769772.9769778
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.10284361.10284367
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -167,8 +165,6 @@ TREE_COLORS = fi=00:mi=00:mh=00:ln=01;36:or=01;31:di=01;34:ow=01;34:st=34:tw=34:
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a5
 # automatic
 ^F = $(notdir $^)
 # default
@@ -182,9 +178,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 427
+VSCODE_PID = 7855
 # variable set hash-table stats:
-# Load=85/1024=8%, Rehash=0, Collisions=2/112=2%
+# Load=83/1024=8%, Rehash=0, Collisions=2/110=2%
 
 # Pattern-specific Variable Values
 
@@ -280,7 +276,6 @@ Makefile:
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 fclean:
@@ -311,6 +306,7 @@ clean:
 # Load=7/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
 
+ 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
@@ -320,6 +316,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu May 12 23:04:47 2022
+# Finished Make data base on Thu May 12 23:09:31 2022
 
  

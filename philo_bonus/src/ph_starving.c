@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/12 22:59:18 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:02:43 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	thread_fed(t_exit *exit)
 		sem_wait(exit->fed);
 		i++;
 	}
-	printf("All fed\n");
 	sem_post(exit->died);
 }
 
