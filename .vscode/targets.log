@@ -8,14 +8,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon May 16 16:51:43 2022
+# Make data base, printed on Mon May 16 20:49:02 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
- 
 ?F = $(notdir $?)
 # environment
 VSCODE_LOG_NATIVE = false
@@ -44,7 +43,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-543841ef-c881-4ec9-ab74-45d1d3d5b04b.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ld/sh1sblf11kd9n_lxmzlt97lm0000gn/T/vscode-ipc-685feebd-508d-4d43-96da-f3b0e21d56c2.sock
 # environment
 VSCODE_CWD = /
 # makefile (from `Makefile', line 1)
@@ -138,7 +137,6 @@ RED = \033[38;5;1m
 # makefile
 MAKEFLAGS = Rrqp
 # environment
- 
 MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
@@ -303,6 +301,7 @@ clean:
 	@make clean -C $(BONUS_D)
 	
 
+ 
 # files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
@@ -316,6 +315,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon May 16 16:51:43 2022
+# Finished Make data base on Mon May 16 20:49:02 2022
 
  
