@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:35:05 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:49:22 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	main(int argc, char **argv)
 	if (!is_valid(argc, argv))
 		return (instruct());
 	arg_init(&a, argc, argv);
+	sem_unlink(FORK_SEM);
+	sem_unlink(FED_SEM);
+	sem_unlink(DIED_SEM);
 	forkk = sem_open(FORK_SEM, O_CREAT | O_EXCL, 0644, a.phil_n);
 	exit.died = sem_open(DIED_SEM, O_CREAT | O_EXCL, 0644, 1);
 	exit.fed = sem_open(FED_SEM, O_CREAT | O_EXCL, 0644, a.phil_n);
