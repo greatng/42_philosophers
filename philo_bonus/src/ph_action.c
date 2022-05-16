@@ -6,17 +6,17 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 16:49:59 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:06:05 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// static void	execute_philo(t_exit exitt)
-// {
-// 	sem_wait(exitt.execute);
-// 	exit(0);
-// }
+static void	execute_philo(t_exit exitt)
+{
+	sem_wait(exitt.execute);
+	exit(0);
+}
 
 static void	sleep_think(t_philo *p)
 {
@@ -52,7 +52,7 @@ void	philo_action(void *a, sem_t *fork, t_exit exit)
 	p = (t_philo *)a;
 	exit.p = p;
 	pthread_create(&tid[0], 0, (void *)check_starving, &exit);
-	//pthread_create(&tid[1], 0, (void *)execute_philo, &exit);
+	pthread_create(&tid[1], 0, (void *)execute_philo, &exit);
 	while (1)
 	{
 		usleep(100);
