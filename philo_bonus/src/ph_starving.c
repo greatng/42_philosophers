@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:56:39 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:03:08 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk)
 		kill(p[i++].pid, SIGINT);
 		sem_post(exit.fed);
 	}
-	free(p);;
+	free(p);
 	sem_close(exit.died);
 	sem_unlink(DIED_SEM);
 	sem_close(forkk);

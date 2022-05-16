@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:59:48 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:58:57 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:02:31 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	arg_init(t_arg *a, int argc, char **argv)
 	}
 	else
 		a->eat_n = 0;
+	sem_unlink(FORK_SEM);
+	sem_unlink(FED_SEM);
+	sem_unlink(DIED_SEM);
 }
 
 void	philo_create(t_philo *p, t_arg a)
