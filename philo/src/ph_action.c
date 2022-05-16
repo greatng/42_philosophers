@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/04 10:08:55 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:52:25 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static int	can_eat(t_philo *p)
 		return (0);
 	gettimeofday(&p->last_fed, NULL);
 	printf(GREEN "%8d %3zu"STR_E RES, time_stamp(*p), p->name);
-	p->fed += 1;
 	my_sleep(p->arg.eat_t, 0);
+	p->fed += 1;
 	pthread_mutex_unlock(&p->fork);
 	pthread_mutex_unlock(&(p->l_philo)->fork);
 	return (1);

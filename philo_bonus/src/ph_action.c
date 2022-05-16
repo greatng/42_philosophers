@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 18:16:23 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:52:10 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	can_eat(t_philo *p, sem_t *fork, sem_t *fed)
 	printf("%8d "CYAN"%3zu"RES STR_F, time_stamp(*p), p->name);
 	gettimeofday(&p->last_fed, NULL);
 	printf(GREEN "%8d %3zu"RES STR_E, time_stamp(*p), p->name);
+	usleep(p->arg.eat_t * 1000);
 	p->fed += 1;
 	if (p->fed == p->arg.eat_n)
 		sem_post(fed);
-	usleep(p->arg.eat_t * 1000);
 	sem_post(fork);
 	sem_post(fork);
 	return (1);
