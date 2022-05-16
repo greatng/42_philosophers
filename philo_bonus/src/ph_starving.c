@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 18:03:08 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:46:32 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ static void	thread_fed(t_exit *exit)
 	size_t	philo_n;
 
 	i = 0;
-	philo_n = exit->p->arg.phil_n;
+	philo_n = exit->p_num;
 	while (i < philo_n)
 	{
 		sem_wait(exit->fed);
 		i++;
 	}
 	sem_post(exit->died);
+	printf("All philosophers have fed\n");
 }
 
-void	check_fed(t_philo *p, t_exit exit)
+void	check_fed(t_exit exit)
 {
 	pthread_t	pid;
 
-	exit.p = p;
 	pthread_create(&pid, 0, (void *)thread_fed, &exit);
 }
 

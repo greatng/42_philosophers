@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:20:12 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:45:22 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_exit
 	sem_t	*fed;
 	sem_t	*died;
 	sem_t	*execute;
+	size_t	p_num;
 	t_philo	*p;
 }	t_exit;
 
@@ -71,7 +72,7 @@ int		death_stamp(t_philo p);
 void	arg_init(t_arg *a, int argc, char **argv);
 void	philo_create(t_philo *p, t_arg a);
 void	check_starving(t_exit *exit);
-void	check_fed(t_philo *p, t_exit exit);
+void	check_fed(t_exit exit);
 void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk);
 void	philo_action(void *a, sem_t *fork, t_exit exit);
 void	fed_init(sem_t *fed, size_t n);
