@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 15:59:31 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:06:40 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void	check_fed(t_philo *p, t_exit exit)
 	pthread_create(&pid, 0, (void *)thread_fed, &exit);
 }
 
-void	check_starving(t_exit *exit)
+void	check_starving(t_exit *exitt)
 {
 	t_philo		*p;
 	int			died;
 
-	p = exit->p;
+	p = exitt->p;
 	died = p->arg.die_t;
 	while (1)
 	{
@@ -68,7 +68,8 @@ void	check_starving(t_exit *exit)
 		{
 			printf("%8d "RED"%3zu"RES STR_D, \
 				time_stamp(*p), p->name);
-			sem_post(exit->died);
+			sem_post(exitt->died);
+			exit(0);
 		}
 		usleep(50);
 	}
