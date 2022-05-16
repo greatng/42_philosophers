@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:19:08 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:27:44 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	philo_release(t_philo *p, int philo_n, sem_t *forkk, t_exit exit)
 			p[i].pid = pid;
 			philo_action(&p[i], forkk, exit);
 		}
+		printf("Philo %d PID %d\n", i, pid);
 		i++;
 	}
 }
