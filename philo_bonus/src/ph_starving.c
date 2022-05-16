@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:32:36 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:36:04 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk)
 	while (i < p->arg.phil_n)
 	{
 		kill(p[i++].pid, SIGINT);
-		sem_post(exit.execute);
+		// sem_post(exit.execute);
 		sem_post(exit.fed);
 	}
 	free(p);
@@ -31,11 +31,11 @@ void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk)
 	sem_unlink(DIED_SEM);
 	sem_close(forkk);
 	sem_unlink(FORK_SEM);
-	i = 0;
-	while (i++ < p->arg.phil_n)
-		sem_post(exit.execute);
-	sem_close(exit.execute);
-	sem_unlink(EXEC_SEM);
+	// i = 0;
+	// while (i++ < p->arg.phil_n)
+	// 	sem_post(exit.execute);
+	// sem_close(exit.execute);
+	// sem_unlink(EXEC_SEM);
 }
 
 static void	thread_fed(t_exit *exit)

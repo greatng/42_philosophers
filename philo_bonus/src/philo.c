@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:27:44 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:35:05 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ int	main(int argc, char **argv)
 	philo_release(p, a.phil_n, forkk, exit);
 	check_fed(p, exit);
 	kill_philo(p, exit, forkk);
+	printf("EOF\n");
 }
