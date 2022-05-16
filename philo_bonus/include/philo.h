@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 16:19:27 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:46:55 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # define GREEN "\033[0;32m"
 # define CYAN "\033[0;36m"
 # define RES "\033[0m"
+
+# define FORK_SEM "/fork"
+# define DIED_SEM "/died"
+# define FED_SEM "/fed"
+# define EXEC_SEM "/exec"
 
 # define STR_D " has died\n"
 # define STR_S " is sleeping\n"
@@ -69,6 +74,6 @@ void	check_starving(t_exit *exit);
 void	check_fed(t_philo *p, t_exit exit);
 void	kill_philo(t_philo *p, t_exit exit, sem_t *forkk);
 void	philo_action(void *a, sem_t *fork, t_exit exit);
-void	fed_init(sem_t *fed, size_t n);
+void	fed_init(sem_t *fed, sem_t *execute, size_t n);
 
 #endif
