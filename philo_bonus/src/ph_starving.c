@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:34:15 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 16:06:40 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:09:23 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	check_starving(t_exit *exitt)
 			printf("%8d "RED"%3zu"RES STR_D, \
 				time_stamp(*p), p->name);
 			sem_post(exitt->died);
+			printf("Post completed\n");
 			exit(0);
 		}
 		usleep(50);
