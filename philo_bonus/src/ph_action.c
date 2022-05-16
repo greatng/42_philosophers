@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 20:52:10 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:54:20 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	philo_action(void *a, sem_t *fork, t_exit exit)
 	pthread_create(&tid[0], 0, (void *)check_starving, &exit);
 	while (1)
 	{
-		usleep(100);
+		usleep(500);
 		if (can_eat(p, fork, exit.fed))
 			sleep_think(p);
 	}
