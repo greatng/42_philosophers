@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:59:48 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 16:55:13 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:19:19 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	philo_create(t_philo *p, t_arg a)
 	}
 }
 
-void	fed_init(sem_t *fed, sem_t *execute, size_t n)
+void	fed_init(sem_t *fed, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		sem_wait(execute);
+		//sem_wait(execute);
 		sem_wait(fed);
 		i++;
 	}
