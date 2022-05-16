@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:55 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/13 17:04:34 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:19:27 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_exit
 {
 	sem_t	*fed;
 	sem_t	*died;
+	sem_t	*execute;
 	t_philo	*p;
 }	t_exit;
 
