@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:56:27 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 17:49:22 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:57:54 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	philo_release(t_philo *p, int philo_n, sem_t *forkk, t_exit exit)
 			p[i].pid = pid;
 			philo_action(&p[i], forkk, exit);
 		}
-		printf("Philo %d PID %d\n", i, pid);
 		i++;
 	}
 }
@@ -57,7 +56,6 @@ int	main(int argc, char **argv)
 	forkk = sem_open(FORK_SEM, O_CREAT | O_EXCL, 0644, a.phil_n);
 	exit.died = sem_open(DIED_SEM, O_CREAT | O_EXCL, 0644, 1);
 	exit.fed = sem_open(FED_SEM, O_CREAT | O_EXCL, 0644, a.phil_n);
-	//exit.execute = sem_open(EXEC_SEM, O_CREAT | O_EXCL, 0644, a.phil_n);
 	sem_wait(exit.died);
 	fed_init(exit.fed, a.phil_n);
 	p = malloc(sizeof(t_philo) * (a.phil_n + 1));
@@ -66,6 +64,7 @@ int	main(int argc, char **argv)
 	philo_create(p, a);
 	philo_release(p, a.phil_n, forkk, exit);
 	check_fed(p, exit);
+	printf("PID %d\n", getpid());
 	kill_philo(p, exit, forkk);
 	printf("EOF\n");
 }
