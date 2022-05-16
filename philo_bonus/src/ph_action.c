@@ -6,7 +6,7 @@
 /*   By: pngamcha <pngamcha@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:54:41 by pngamcha          #+#    #+#             */
-/*   Updated: 2022/05/16 20:54:20 by pngamcha         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:03:51 by pngamcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	sleep_think(t_philo *p)
 		time_stamp(*p), p->name);
 }
 
-static int	can_eat(t_philo *p, sem_t *fork, sem_t *fed)
+static void	can_eat(t_philo *p, sem_t *fork, sem_t *fed)
 {
 	sem_wait(fork);
 	printf("%8d "CYAN"%3zu"RES STR_F, time_stamp(*p), p->name);
@@ -41,7 +41,6 @@ static int	can_eat(t_philo *p, sem_t *fork, sem_t *fed)
 		sem_post(fed);
 	sem_post(fork);
 	sem_post(fork);
-	return (1);
 }
 
 void	philo_action(void *a, sem_t *fork, t_exit exit)
@@ -54,8 +53,9 @@ void	philo_action(void *a, sem_t *fork, t_exit exit)
 	pthread_create(&tid[0], 0, (void *)check_starving, &exit);
 	while (1)
 	{
-		usleep(500);
-		if (can_eat(p, fork, exit.fed))
-			sleep_think(p);
+		usleep(100);
+		can_eat(p, fork, exit.fed);
+		usleep(100);
+		sleep_think(p);
 	}
 }
