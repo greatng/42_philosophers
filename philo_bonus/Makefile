@@ -2,7 +2,7 @@ NAME			=	philo_bonus
 
 LEAKS			=	-fsanitize=address -fno-omit-frame-pointer
 CC			=	gcc
-
+CFLAGS			=	-Wall -Wextra -Wextra
 
 HEADER_DIR		=	include
 HEADER			=	philo
